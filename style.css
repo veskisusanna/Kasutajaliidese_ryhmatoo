@@ -1,1 +1,43 @@
-/*# sourceMappingURL=style.css.map */
+body {
+  font-family: "Helvetica", sans-serif;
+  background: #dc9ecd;
+  color: #333;
+  margin: 0;
+  padding: 1;
+}
+
+.view {
+  max-width: 350px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+  display: none;
+}
+
+form input {
+  display: block;
+  margin-bottom: 2rem;
+  padding: 0.4rem;
+  width: 100%;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+button {
+  background: #2c0532;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #dea4e7;
+}
