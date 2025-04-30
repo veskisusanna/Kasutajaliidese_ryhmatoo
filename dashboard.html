@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Treening – Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <section class="dashboard-hero">
+    <div class="topbar">
+      <button id="my-workouts-btn">Minu treeningud</button>
+      <button id="add-workout-btn">Lisa treening</button>
+      <button id="logout-btn">Logi välja</button>
+    </div>
+    <div class="overlay">
+      <h1>Fit. Fast. <span class="highlight">Forever.</span></h1>
+      <p>Tere tulemast, <span id="user-name"></span>!</p>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (!user) {
+        // Kui kasutaja pole sisse logitud, vii tagasi login-lehele
+        return window.location.replace('index.html');
+      }
+      document.getElementById('user-name').textContent = user.name;
+  
+      // Logout nupp
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        localStorage.removeItem('user');            // kustutame sessioonist
+        window.location.replace('indeks.html');       // suuname login‐vaatesse
+      });
+    });
+  </script>
+</body>
+</html>

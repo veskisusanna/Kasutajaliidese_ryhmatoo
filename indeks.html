@@ -1,56 +1,38 @@
 <!DOCTYPE html>
 <html lang="et">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Treening veebileht</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Treening – Logi sisse</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
-
-    <div id="app">
-
-     <!-- Login vaade -->
-      <section id="login-view" class="view">
-        <h1>Logi sisse</h1>
-        <form id="login-form">
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Parool" required />
-        <button type="submit">Sisene</button>
-        <p>Või <a href="#" id="show-register">loo konto</a></p>
-    </form>
-</section>
-
-    <!-- Registreerimise vaade -->
-    <section id="register-view" class="view hidden">
-        <h1>Loo konto</h1>
-    <form id="register-form">
-        <input type="text" placeholder="Nimi" required />
-        <input type="number" placeholder="Pikkus (cm)" required />
-        <input type="number" placeholder="Kaal (kg)" required />
+  <div class="view-container">
+    <!-- Login -->
+    <section id="login-view" class="view">
+      <h1>Logi sisse</h1>
+      <form id="login-form">
         <input type="email" placeholder="Email" required />
         <input type="password" placeholder="Parool" required />
-    <button type="submit">Registreeru</button>
-    <p>Või <a href="#" id="show-login">logi sisse</a></p>
-</form>
-</section>
-
-<!-- Dashboard (pärast sisselogimist) -->
- <section id="dashboard-view" class="view hidden">
-    <h1>Tere tulemast, <span id="user-name">kasutaja</span>!</h1>
-    <div class="menu">
-        <button id="my-workouts-btn">Minu treeningud</button>
-        <button id="all-workouts-btn">Kõik treeningud</button>
-        <button id="add-workout-btn">Lisa treening</button>
-    </div>
-    <div id="content-area">
-        <!-- Siia laetakse dünaamiliselt sisu -->
-        </div>
+        <button type="submit">Sisene</button>
+      </form>
+      <p>Või <a href="#" id="show-register">loo konto</a></p>
     </section>
-    </div>
 
-    <script src="script.js"></script>
+    <!-- Register -->
+    <section id="register-view" class="view hidden">
+      <h1>Loo konto</h1>
+      <form id="register-form">
+        <input type="text" placeholder="Nimi" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Parool" required />
+        <button type="submit">Registreeru</button>
+      </form>
+      <p>Või <a href="#" id="show-login">logi sisse</a></p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
