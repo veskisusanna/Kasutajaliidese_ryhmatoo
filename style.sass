@@ -1,4 +1,6 @@
-$font: 'Syne', sans-serif
+
+$font-body: 'Syne', sans-serif
+$font-heading: 'Poppins', sans-serif
 $bg: #f0f0f5
 $primary: #ff69b4
 $white: #fff
@@ -6,32 +8,35 @@ $text: #333
 
 body
   margin: 0
-  font-family: $font
+  font-family: $font-body
   background-color: $bg
 
-.view
-  max-width: 400px
-  margin: 4rem auto
-  padding: 2rem
-  background-color: $white
-  border-radius: 12px
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1)
+h1, h2, h3
+  font-family: $font-heading
+  font-weight: 600
+  color: $text
+
+.page-title
+  font-family: $font-heading
+  font-weight: 600
+  font-size: 2rem
   text-align: center
+  margin: 3rem 0 1rem
+  color: $text
 
-.hidden
-  display: none
-
-input
-  display: block
-  width: 80%           // kitsamaks
-  max-width: 300px     // ei muutu liiga laiaks
-  margin: 1rem auto    // keskele
-  padding: 0.8rem
-  border: 1px solid #ccc
-  border-radius: 8px
+.topbar
+  position: sticky
+  top: 0
+  background-color: lighten($primary, 40%)
+  padding: 1rem
+  display: flex
+  justify-content: center
+  gap: 1rem
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1)
+  z-index: 1000
 
 button
-  background-color: $primary   // nüüd õige
+  background-color: $primary
   color: $white
   border: none
   padding: 0.7rem 1.2rem
@@ -41,7 +46,7 @@ button
   margin: 0.5rem
 
 button:hover
-  background-color: darken($primary, 10%)  // tumedam variatsioon
+  background-color: darken($primary, 10%)
 
 .dashboard-hero
   background: url('https://images.pexels.com/photos/4753996/pexels-photo-4753996.jpeg') no-repeat center center
@@ -60,17 +65,80 @@ button:hover
     top: 0
     left: 0
     right: 0
-    background-color: lighten($primary, 40%) // hele roosa triip
+    background-color: lighten($primary, 40%)
     padding: 1rem
     display: flex
     justify-content: center
     gap: 1rem
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2)
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2)
 
   .overlay
-    background-color: rgba(0,0,0,0.5)
+    background-color: rgba(0, 0, 0, 0.4)  // natuke läbipaistev taust
     padding: 2rem
     border-radius: 12px
+    text-align: center
+
+    h1, p
+      color: $white !important
+
+    .highlight
+      color: $primary
 
   .highlight
     color: $primary
+
+.workout-section
+  padding: 3rem 2rem
+  max-width: 1200px
+  margin: 0 auto
+
+.workout-section h2
+  margin-bottom: 1rem
+  margin-top: 4rem
+  font-family: $font-heading
+  color: $text
+
+.workout-grid
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+  gap: 2.5rem
+  margin-top: 2rem
+
+.workout-card
+  background-color: $white
+  border-radius: 16px
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08)
+  padding: 2rem
+  display: flex
+  flex-direction: column
+  align-items: center
+  text-align: center
+
+  img
+    width: 100%
+    height: 200px
+    object-fit: cover
+    border-radius: 8px
+    margin-bottom: 1rem
+
+  h3
+    font-size: 1.4rem
+    margin: 0.5rem 0
+    color: $primary
+    font-family: $font-body
+
+  p
+    font-size: 0.95rem
+    margin: 0.3rem 0
+    color: $primary
+    font-family: $font-body
+
+  .add-btn
+    margin-top: 1rem
+    padding: 0.6rem 1.4rem
+    background-color: $primary
+    color: $white
+    border: none
+    border-radius: 8px
+    font-weight: bold
+    cursor: pointer

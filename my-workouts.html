@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minu treeningud</title>
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Ülemine nav -->
+  <div class="topbar">
+    <a href="my-workouts.html"><button>Minu treeningud</button></a>
+    <a href="add-workout.html"><button>Lisa treening</button></a>
+    <button id="logout-btn">Logi välja</button>
+  </div>
+
+  <!-- Treeningute sisu -->
+  <main class="workout-section">
+    <h1 class="page-title">Sinu lisatud treeningud:</h1>
+    <div id="my-workout-list" class="workout-grid"></div>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const list = document.getElementById('my-workout-list');
+      const saved = JSON.parse(localStorage.getItem('myWorkouts')) || [];
+
+      if (saved.length === 0) {
+        list.innerHTML = `
+          <p style="text-align: center; font-family: 'Poppins', sans-serif; font-size: 1.1rem;">
+            Sa ei ole veel ühtegi treeningut lisanud.<br>
+            <a href="add-workout.html" style="color: #ff69b4; text-decoration: underline;">Lisa esimene treening</a>
+          </p>
+        `;
+      } else {
+        saved.forEach(w => {
+          const card = document.createElement('div');
+          card.className = 'workout-card';
+          card.innerHTML = `
+            <img src="${w.image}" alt="${w.title}">
+            <h3>${w.title}</h3>
+            <p>Kestus: ${w.duration}</p>
+            <p>Raskus: ${w.level}</p>
+          `;
+          list.appendChild(card);
+        });
+      }
+
+      // Logout
+      const logoutBtn = document.getElementById('logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          localStorage.removeItem('user');
+          window.location.replace('indeks.html');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+
+</html>
