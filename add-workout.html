@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lisa treening</title>
+  <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Ülemine nav nagu dashboardil -->
+    <div class="topbar">
+      <a href="my-workouts.html"><button>Minu treeningud</button></a>
+      <a href="add-workout.html"><button>Lisa treening</button></a>
+      <button id="logout-btn">Logi välja</button>
+    </div>
+  
+    <main class="workout-section">
+        <h1 class="page-title">Vali endale sobiv treening:</h1>
+
+  
+      <!-- Kategooria: Aktiivne -->
+      <h2>Aktiivne</h2>
+      <div class="workout-grid">
+        <div class="workout-card">
+          <img src="img/pilates.jpg" alt="Pilates">
+          <h3>Pilates</h3>
+          <p>Kestus: 40 min</p>
+          <p>Raskus: 4/5</p>
+          <button class="add-btn">Lisa treening</button>
+        </div>
+        <div class="workout-card">
+          <img src="img/box.jpg" alt="Box">
+          <h3>Box</h3>
+          <p>Kestus: 30 min</p>
+          <p>Raskus: 5/5</p>
+          <button class="add-btn">Lisa treening</button>
+        </div>
+      </div>
+  
+      <!-- Kategooria: Venitus -->
+      <h2>Venitus</h2>
+      <div class="workout-grid">
+        <div class="workout-card">
+          <img src="img/yoga.jpg" alt="Jooga">
+          <h3>Jooga</h3>
+          <p>Kestus: 45 min</p>
+          <p>Raskus: 2/5</p>
+          <button class="add-btn">Lisa treening</button>
+        </div>
+        <div class="workout-card">
+          <img src="img/venitus.jpg" alt="Jalavenitus">
+          <h3>Jalavenitus</h3>
+          <p>Kestus: 20 min</p>
+          <p>Raskus: 1/5</p>
+          <button class="add-btn">Lisa treening</button>
+        </div>
+      </div>
+    </main>
+  
+    <script src="script.js"></script>
+  </body>
+  
+</html>

@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Treening – Logi sisse</title>
   <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="view-container">
+    
     <!-- Login -->
     <section id="login-view" class="view">
       <h1>Logi sisse</h1>
@@ -31,6 +32,19 @@
       </form>
       <p>Või <a href="#" id="show-login">logi sisse</a></p>
     </section>
+
+    <!-- Lisa treening -->
+    <section id="add-workout-view" class="view hidden">
+      <h1>Lisa treening</h1>
+      <label for="category-select">Vali kategooria:</label>
+      <select id="category-select" name="category">
+        <option value="cardio">Cardio</option>
+        <option value="strength">Tugevustreening</option>
+        <option value="flexibility">Painduvus</option>
+      </select>
+      <div id="workout-list" class="workout-grid"></div>
+    </section>
+
   </div>
 
   <script src="script.js"></script>
