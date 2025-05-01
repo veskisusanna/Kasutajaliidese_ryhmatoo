@@ -1,64 +1,147 @@
 <!DOCTYPE html>
 <html lang="et">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lisa treening</title>
-  <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+  <title>TreeningApp – Lisa treening</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
-    <!-- Ülemine nav nagu dashboardil -->
-    <div class="topbar">
-      <a href="my-workouts.html"><button>Minu treeningud</button></a>
-      <a href="add-workout.html"><button>Lisa treening</button></a>
-      <button id="logout-btn">Logi välja</button>
-    </div>
-  
-    <main class="workout-section">
-        <h1 class="page-title">Vali endale sobiv treening:</h1>
 
-  
-      <!-- Kategooria: Aktiivne -->
-      <h2>Aktiivne</h2>
-      <div class="workout-grid">
-        <div class="workout-card">
-          <img src="img/pilates.jpg" alt="Pilates">
-          <h3>Pilates</h3>
-          <p>Kestus: 40 min</p>
-          <p>Raskus: 4/5</p>
-          <button class="add-btn">Lisa treening</button>
-        </div>
-        <div class="workout-card">
-          <img src="img/box.jpg" alt="Box">
-          <h3>Box</h3>
-          <p>Kestus: 30 min</p>
-          <p>Raskus: 5/5</p>
-          <button class="add-btn">Lisa treening</button>
-        </div>
+  <div id="info-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <p id="info-text"></p>
+      <div class="modal-actions">
+        <button id="info-ok">OK</button>
       </div>
-  
-      <!-- Kategooria: Venitus -->
-      <h2>Venitus</h2>
-      <div class="workout-grid">
-        <div class="workout-card">
-          <img src="img/yoga.jpg" alt="Jooga">
-          <h3>Jooga</h3>
-          <p>Kestus: 45 min</p>
-          <p>Raskus: 2/5</p>
-          <button class="add-btn">Lisa treening</button>
-        </div>
-        <div class="workout-card">
-          <img src="img/venitus.jpg" alt="Jalavenitus">
-          <h3>Jalavenitus</h3>
-          <p>Kestus: 20 min</p>
-          <p>Raskus: 1/5</p>
-          <button class="add-btn">Lisa treening</button>
-        </div>
+    </div>
+  </div>
+
+  <div class="topbar">
+    <a href="dashboard.html"><button>Esileht</button></a>
+    <a href="my-workouts.html"><button>Minu treeningud</button></a>
+    <button id="logout-btn">Logi välja</button>
+  </div>
+
+  <!-- Pealkiri -->
+  <h2 class="page-title">Vali endale sobiv treening:</h2>
+
+  <section class="workout-section">
+    <div class="workout-grid">
+      
+      <!--Pilates -->
+      <div class="workout-card">
+        <img src="https://images.pexels.com/photos/4662439/pexels-photo-4662439.jpeg" alt="Pilates">
+        <h3>Pilates</h3>
+        <p>Kestus: 40 min</p>
+        <p>Raskus: 4/5</p>
+        <button class="add-btn">Lisa treening</button>
       </div>
-    </main>
-  
-    <script src="script.js"></script>
-  </body>
-  
+
+      <!--Box -->
+      <div class="workout-card">
+        <img src="https://images.pexels.com/photos/4753923/pexels-photo-4753923.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        alt="Box">       
+        <h3>Box</h3>
+        <p>Kestus: 60 min</p>
+        <p>Raskus: 5/5</p>
+        <button class="add-btn">Lisa treening</button>
+      </div>
+
+      <!-- Venitus -->
+      <div class="workout-card">
+        <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg" alt="Venitus">
+        <h3>Venitus</h3>
+        <p>Kestus: 15 min</p>
+        <p>Raskus: 2/5</p>
+        <button class="add-btn">Lisa treening</button>
+      </div>
+
+      <!-- Jooga -->
+      <div class="workout-card">
+        <img src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg" alt="Jooga">
+        <h3>Jooga</h3>
+        <p>Kestus: 45 min</p>
+        <p>Raskus: 3/5</p>
+        <button class="add-btn">Lisa treening</button>
+      </div>
+
+      <!-- HIIT -->
+      <div class="workout-card">
+        <img src="https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg" alt="HIIT">
+        <h3>HIIT workout</h3>
+        <p>Kestus: 20 min</p>
+        <p>Raskus: 5/5</p>
+        <button class="add-btn">Lisa treening</button>
+      </div>
+
+      <!-- Aeroobika -->
+    <div class="workout-card">
+      <img src="https://images.pexels.com/photos/3984339/pexels-photo-3984339.jpeg" alt="Aeroobika">      
+      <h3>Aeroobika</h3>
+      <p>Kestus: 30 min</p>
+      <p>Raskus: 3/5</p>
+      <button class="add-btn">Lisa treening</button>
+    </div>
+
+    <!-- Jõutreening -->
+    <div class="workout-card">
+      <img src="https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg" alt="Jõutreening">
+      <h3>Jõutreening</h3>
+      <p>Kestus: 50 min</p>
+      <p>Raskus: 4/5</p>
+      <button class="add-btn">Lisa treening</button>
+    </div>
+        
+    </div>
+  </section>
+
+  <script>
+
+    const infoOverlay = document.getElementById('info-modal');
+    const infoText    = document.getElementById('info-text');
+    const infoOk      = document.getElementById('info-ok');
+
+    function showInfo(msg) {
+      infoText.textContent = msg;
+      infoOverlay.classList.remove('hidden');
+    }
+
+    infoOk.addEventListener('click', () => {
+      infoOverlay.classList.add('hidden');
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (!user) {
+        // Kui pole sisse logitud, suuna login-lehele
+        return window.location.replace('indeks.html');
+      }
+
+      // Logout-nupp
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        localStorage.removeItem('user');
+        window.location.replace('indeks.html');
+      });
+
+      // Lisa treening nupu vajutus
+      document.querySelectorAll('.add-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.workout-card');
+          const workout = {
+            title: card.querySelector('h3').textContent,
+            duration: card.querySelectorAll('p')[0].textContent,
+            level: card.querySelectorAll('p')[1].textContent,
+            image: card.querySelector('img').src
+          };
+          const saved = JSON.parse(localStorage.getItem('myWorkouts') || '[]');
+          saved.push(workout);
+          localStorage.setItem('myWorkouts', JSON.stringify(saved));
+          showInfo(`Treening „${workout.title}“ lisatud!`);
+
+        });
+      });
+    });
+  </script>
+</body>
 </html>

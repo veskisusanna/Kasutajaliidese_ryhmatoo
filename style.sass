@@ -1,10 +1,56 @@
-
 $font-body: 'Syne', sans-serif
 $font-heading: 'Poppins', sans-serif
-$bg: #f0f0f5
+$bg: #f0f5f5
 $primary: #ff69b4
 $white: #fff
 $text: #333
+
+
+// LOGIN / REGISTER
+
+.view-container
+  display: flex
+  align-items: center
+  justify-content: center
+  min-height: 100vh
+  background-color: $bg
+
+.view
+  background-color: $white
+  padding: 2.5rem
+  border-radius: 12px
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1)
+  width: 90%
+  max-width: 450px
+  text-align: center
+
+.view form input
+  display: block
+  width: 90%
+  max-width: 360px
+  margin: 0.6rem auto
+  padding: 0.9rem
+  border: 1px solid #ccc
+  border-radius: 8px
+
+.view form button
+  display: block
+  width: 60%
+  max-width: 200px
+  margin: 1.2rem auto
+  padding: 1rem 0
+  font-size: 1.1rem
+  background-color: $primary
+  color: $white
+  border: none
+  border-radius: 8px
+  cursor: pointer
+  font-weight: bold
+
+.view form button:hover
+  background-color: darken($primary, 10%)
+
+// ÜLDSTIILID
 
 body
   margin: 0
@@ -48,6 +94,9 @@ button
 button:hover
   background-color: darken($primary, 10%)
 
+
+// DASHBOARD 
+
 .dashboard-hero
   background: url('https://images.pexels.com/photos/4753996/pexels-photo-4753996.jpeg') no-repeat center center
   background-size: cover
@@ -73,7 +122,7 @@ button:hover
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2)
 
   .overlay
-    background-color: rgba(0, 0, 0, 0.4)  // natuke läbipaistev taust
+    background-color: rgba(0, 0, 0, 0.4)
     padding: 2rem
     border-radius: 12px
     text-align: center
@@ -86,6 +135,8 @@ button:hover
 
   .highlight
     color: $primary
+
+// WORKOUT SECTION
 
 .workout-section
   padding: 3rem 2rem
@@ -142,3 +193,69 @@ button:hover
     border-radius: 8px
     font-weight: bold
     cursor: pointer
+
+.workout-card
+  position: relative   
+
+  // kustutusnupp
+  .delete-btn
+    position: absolute
+    top: 0.5rem
+    right: 0.5rem
+    background: transparent
+    border: none
+    font-size: 1.2rem
+    color: rgba(0,0,0,0.5)
+    cursor: pointer
+    padding: 0
+    line-height: 1
+
+    &:hover
+      color: rgba(0,0,0,0.8)
+
+
+// MODAALAKEN
+
+.modal-overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(0,0,0,0.5)
+  display: flex
+  align-items: center
+  justify-content: center
+  z-index: 2000
+
+  &.hidden
+    display: none
+
+.modal
+  background: $white
+  padding: 2rem
+  border-radius: 8px
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2)
+  text-align: center
+  max-width: 320px
+  width: 90%
+
+.modal-actions
+  margin-top: 1.5rem
+  display: flex
+  justify-content: space-around
+
+  button
+    padding: 0.6rem 1.2rem
+    border: none
+    border-radius: 6px
+    cursor: pointer
+    font-weight: bold
+
+    &#confirm-cancel
+      background: lighten($primary, 30%)
+      color: $text
+
+    &#confirm-ok
+      background: $primary
+      color: $white

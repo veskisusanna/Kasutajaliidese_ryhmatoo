@@ -1,7 +1,54 @@
+.view-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f0f5f5;
+}
+
+.view {
+  background-color: #fff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.view form input {
+  display: block;
+  width: 90%;
+  max-width: 360px;
+  margin: 0.6rem auto;
+  padding: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.view form button {
+  display: block;
+  width: 60%;
+  max-width: 200px;
+  margin: 1.2rem auto;
+  padding: 1rem 0;
+  font-size: 1.1rem;
+  background-color: #ff69b4;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.view form button:hover {
+  background-color: #ff369b;
+}
+
 body {
   margin: 0;
   font-family: "Syne", sans-serif;
-  background-color: #f0f0f5;
+  background-color: #f0f5f5;
 }
 
 h1, h2, h3 {
@@ -145,4 +192,70 @@ button:hover {
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.workout-card {
+  position: relative;
+}
+.workout-card .delete-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+.workout-card .delete-btn:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 320px;
+  width: 90%;
+}
+
+.modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+}
+.modal-actions button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.modal-actions button#confirm-cancel {
+  background: white;
+  color: #333;
+}
+.modal-actions button#confirm-ok {
+  background: #ff69b4;
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */

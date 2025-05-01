@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TreeningApp – Loo konto</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div id="info-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <p id="info-text"></p>
+      <div class="modal-actions">
+        <button id="info-ok">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="view-container">
+    <section class="view">
+      <h1>Loo konto</h1>
+      <form id="register-form">
+        <input type="text"     placeholder="Nimi"   required />
+        <input type="email"    placeholder="Email"  required />
+        <input type="password" placeholder="Parool" required />
+        <button type="submit">Registreeru</button>
+      </form>
+      <p>Või <a href="indeks.html" id="show-login">logi sisse</a></p>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const infoOverlay = document.getElementById('info-modal');
+      const infoText    = document.getElementById('info-text');
+      const infoOk      = document.getElementById('info-ok');
+
+      function showInfo(msg) {
+        infoText.textContent = msg;
+        infoOverlay.classList.remove('hidden');
+      }
+
+      infoOk.addEventListener('click', () => {
+        infoOverlay.classList.add('hidden');
+        // peale registreerimist suuna login-lehele
+        window.location.replace('indeks.html');
+      });
+
+      // Link “logi sisse”
+      document.getElementById('show-login').addEventListener('click', e => {
+        e.preventDefault();
+        window.location.replace('indeks.html');
+      });
+
+      document.getElementById('register-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const form  = e.target;
+        const name  = form.elements[0].value;
+        const email = form.elements[1].value;
+        const pass  = form.elements[2].value;
+
+        localStorage.setItem('user', JSON.stringify({ name, email, password: pass }));
+        
+        showInfo('Konto loodud! Palun logi sisse.');
+      });
+    });
+  </script>
+</body>
+</html>
