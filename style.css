@@ -75,6 +75,24 @@ h1, h2, h3 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.meist-link {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #ff69b4;
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+.meist-link:hover {
+  text-decoration: underline;
+}
+
 .logo {
   height: 40px;
   width: auto;
@@ -298,4 +316,56 @@ button:hover {
     border: none;
     cursor: pointer;
   }
+}
+.about-section {
+  max-width: 700px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.page-title {
+  font-size: 2rem;
+  color: #ff69b4;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.intro-text {
+  margin-bottom: 1.5rem;
+}
+
+.motive-text {
+  margin-top: 2rem;
+  font-style: italic;
+  text-align: center;
+  color: #ff69b4;
+  font-size: 1.2rem;
+}
+
+.register-cta {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.register-button {
+  display: inline-block;
+  background-color: #ff69b4;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+.register-button:hover {
+  background-color: #ff369b;
 }/*# sourceMappingURL=style.css.map */
