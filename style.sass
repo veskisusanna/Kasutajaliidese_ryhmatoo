@@ -71,15 +71,20 @@ h1, h2, h3
   color: $text
 
 .topbar
-  position: sticky
-  top: 0
-  background-color: lighten($primary, 40%)
-  padding: 1rem
   display: flex
-  justify-content: center
-  gap: 1rem
+  justify-content: space-between
+  align-items: center
+  padding: 1rem 2rem
+  background-color: lighten($primary, 40%)
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1)
-  z-index: 1000
+
+.logo
+  height: 40px
+  width: auto
+
+.menu
+  display: flex
+  gap: 1rem
 
 button
   background-color: $primary
@@ -108,18 +113,6 @@ button:hover
   align-items: center
   justify-content: center
   text-align: center
-
-  .topbar
-    position: absolute
-    top: 0
-    left: 0
-    right: 0
-    background-color: lighten($primary, 40%)
-    padding: 1rem
-    display: flex
-    justify-content: center
-    gap: 1rem
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2)
 
   .overlay
     background-color: rgba(0, 0, 0, 0.4)
@@ -260,6 +253,17 @@ button:hover
       background: $primary
       color: $white
 
+.search-container
+  text-align: center
+  margin-bottom: 1rem
+
+.search-container input
+  width: 80%
+  max-width: 400px
+  padding: 0.8rem
+  border: 1px solid #ccc
+  border-radius: 8px
+
 @media (max-width: 350px)
   .topbar
     flex-wrap: wrap
@@ -288,5 +292,6 @@ button:hover
     background-color: #ff69b4 // sinu taust
     border: none // või nt 1px solid #ccc kui soovid
     cursor: pointer
+
 
 

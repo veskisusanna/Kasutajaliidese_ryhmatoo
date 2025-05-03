@@ -3,10 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TreeningApp – Loo konto</title>
+  <title>FitFastFitness – Loo konto</title>
   <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 <body>
+  <div class="topbar">
+     <img src="img/logo.png" alt="Logo" class="logo" />
+  </div>
 
   <div id="info-modal" class="modal-overlay hidden">
     <div class="modal">
@@ -62,7 +67,7 @@
         const pass  = form.elements[2].value;
 
         localStorage.setItem('user', JSON.stringify({ name, email, password: pass }));
-        
+
         showInfo('Konto loodud! Palun logi sisse.');
       });
     });

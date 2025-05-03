@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TreeningApp – Minu treeningud</title>
+  <title>FitFastFitness – Minu treeningud</title>
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 <body>
 
+  <!-- Kustutuse kinnitus -->
   <div id="confirm-modal" class="modal-overlay hidden">
     <div class="modal">
       <p id="confirm-text"></p>
@@ -19,33 +22,46 @@
     </div>
   </div>
 
+  <!-- Nav -->
   <div class="topbar">
-    <button class="nav-button" onclick="location.href='dashboard.html'">Esileht</button>
-    <button class="nav-button" onclick="location.href='add-workout.html'">Lisa treening</button>
-    <button class="nav-button" id="logout-btn">Logi välja</button>    
+      <a href="dashboard.html">
+        <img src="img/logo.png" alt="Logo" class="logo" />
+      </a>
+        <div class="menu">
+      <a href="my-workouts.html"><button>Minu treeningud</button></a>
+      <a href="add-workout.html"><button>Lisa treening</button></a>
+      <button id="logout-btn">Logi välja</button>
+    </div>
+  </div>
+
+  <h2 class="page-title">Sinu lisatud treeningud:</h2>
+
+  <!-- Otsingukast -->
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Otsi treeningut..." />
   </div>
 
   <main class="workout-section">
-    <h1 class="page-title">Sinu lisatud treeningud:</h1>
     <div id="my-workout-list" class="workout-grid"></div>
   </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Kontroll, et kasutaja on sisse logitud
+      //Sisselogimise kontroll
       const user = JSON.parse(localStorage.getItem('user'));
-      if (!user) return window.location.replace('index.html');
+      if (!user) return window.location.replace('indeks.html');
 
-      // Logout
+      //Logout
       document.getElementById('logout-btn').addEventListener('click', () => {
         localStorage.removeItem('user');
         window.location.replace('indeks.html');
       });
 
+      //Treeningute laadimine
       const list = document.getElementById('my-workout-list');
       let saved = JSON.parse(localStorage.getItem('myWorkouts') || '[]');
 
-      // Viited modaalile
+      //Modal viited
       const modalOverlay = document.getElementById('confirm-modal');
       const modalText    = document.getElementById('confirm-text');
       const btnCancel    = document.getElementById('confirm-cancel');
@@ -57,7 +73,6 @@
         deleteIndex = idx;
         modalOverlay.classList.remove('hidden');
       }
-
       btnOk.addEventListener('click', () => {
         if (deleteIndex !== null) {
           saved.splice(deleteIndex, 1);
@@ -67,12 +82,12 @@
         modalOverlay.classList.add('hidden');
         deleteIndex = null;
       });
-
       btnCancel.addEventListener('click', () => {
         modalOverlay.classList.add('hidden');
         deleteIndex = null;
       });
 
+      //Renderdamine
       function renderWorkouts() {
         list.innerHTML = '';
         if (saved.length === 0) {
@@ -83,8 +98,7 @@
             </p>`;
           return;
         }
-
-        saved.forEach((w, i) => {
+        saved.forEach((w,i) => {
           const card = document.createElement('div');
           card.className = 'workout-card';
           card.innerHTML = `
@@ -94,14 +108,23 @@
             <p>${w.duration}</p>
             <p>${w.level}</p>
           `;
-
-          card.querySelector('.delete-btn').addEventListener('click', () => {
-            showConfirm(w.title, i);
-          });
+          card.querySelector('.delete-btn')
+              .addEventListener('click', () => showConfirm(w.title,i));
           list.appendChild(card);
         });
       }
 
+      //Otsingu loogika
+      const searchInput = document.getElementById('search-input');
+      searchInput.addEventListener('input', () => {
+        const term = searchInput.value.trim().toLowerCase();
+        document.querySelectorAll('.workout-card').forEach(card => {
+          const title = card.querySelector('h3').textContent.toLowerCase();
+          card.style.display = title.includes(term) ? '' : 'none';
+        });
+      });
+
+      // Käivitame esmalt
       renderWorkouts();
     });
   </script>

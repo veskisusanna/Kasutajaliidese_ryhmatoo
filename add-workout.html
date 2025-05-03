@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TreeningApp – Lisa treening</title>
+  <title>FitFastFitness – Lisa treening</title>
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 <body>
 
@@ -19,14 +21,23 @@
   </div>
 
   <div class="topbar">
-    <button class="nav-button" onclick="location.href='dashboard.html'">Esileht</button>
-    <button class="nav-button" onclick="location.href='add-workout.html'">Lisa treening</button>
-    <button class="nav-button" id="logout-btn">Logi välja</button>  
+      <a href="dashboard.html">
+        <img src="img/logo.png" alt="Logo" class="logo" />
+      </a>
+        <div class="menu">
+      <a href="my-workouts.html"><button>Minu treeningud</button></a>
+      <a href="add-workout.html"><button>Lisa treening</button></a>
+      <button id="logout-btn">Logi välja</button>
+    </div>
   </div>
 
   <!-- Pealkiri -->
   <h2 class="page-title">Vali endale sobiv treening:</h2>
 
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Otsi treeningut..." />
+  </div>
+  
   <section class="workout-section">
     <div class="workout-grid">
       
@@ -124,6 +135,15 @@
         window.location.replace('indeks.html');
       });
 
+      // Otsib ja peidab/kuvab kaardid reaalajas
+      const searchInput = document.getElementById('search-input');
+      searchInput.addEventListener('input', () => {
+        const term = searchInput.value.trim().toLowerCase();
+        document.querySelectorAll('.workout-card').forEach(card => {
+          const title = card.querySelector('h3').textContent.toLowerCase();
+          card.style.display = title.includes(term) ? '' : 'none';
+        });
+      });
       // Lisa treening nupu vajutus
       document.querySelectorAll('.add-btn').forEach(btn => {
         btn.addEventListener('click', () => {

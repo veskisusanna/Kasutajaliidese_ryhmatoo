@@ -3,19 +3,26 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TreeningApp – Dashboard</title>
+  <title>FitFastFitness – Esileht</title>
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 <body>
-  <section class="dashboard-hero">
-    <div class="topbar">
-      <button class="nav-button" onclick="location.href='dashboard.html'">Esileht</button>
-      <button class="nav-button" onclick="location.href='add-workout.html'">Lisa treening</button>
-      <button class="nav-button" id="logout-btn">Logi välja</button>  
+
+  <div class="topbar">
+    <img src="img/logo.png" alt="Logo" class="logo" />
+    <div class="menu">
+      <a href="my-workouts.html"><button>Minu treeningud</button></a>
+      <a href="add-workout.html"><button>Lisa treening</button></a>
+      <button id="logout-btn">Logi välja</button>
     </div>
+  </div>
+
+  <section class="dashboard-hero">
     <div class="overlay">
-      <h1>Fit. Fast. <span class="highlight">Forever.</span></h1>
+      <h1>Fit. Fast. <span class="highlight">Fitness.</span></h1>
       <p>Tere tulemast, <span id="user-name"></span>!</p>
     </div>
   </section>
