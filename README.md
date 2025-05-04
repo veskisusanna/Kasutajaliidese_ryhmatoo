@@ -30,6 +30,13 @@ Projekt keskendub kasutajasõbraliku, visuaalselt esteetilise ja mobiilivaatega 
 - Kasutaja andmed salvestatakse `localStorage` abil brauserisse  
 - Treeningute valikud talletatakse samuti lokaalselt
 
+## Makett
+
+<p align="center">
+  <img src="img/makett1.png" alt="makett" width="200" />
+  <img src="img/makett2.png" alt="makett" width="200" />
+</p>
+
 ## Käivitamine  
 1. Ava `index.html` brauseris  
 2. Loo konto või logi sisse  
