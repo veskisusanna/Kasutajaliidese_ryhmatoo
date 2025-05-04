@@ -12,14 +12,17 @@
 <body>
 
   <div class="topbar">
-    <img src="img/logo.png" alt="Logo" class="logo" />
+    <div class="topbar-left">
+      <img src="img/logo.png" alt="Logo" class="logo" />
+    </div>
     <div class="menu">
       <a href="my-workouts.html"><button>Minu treeningud</button></a>
       <a href="add-workout.html"><button>Lisa treening</button></a>
       <button id="logout-btn">Logi välja</button>
     </div>
   </div>
-
+  
+<!-- Esilehe hero + tervitus -->
   <section class="dashboard-hero">
     <div class="overlay">
       <h1>Fit. Fast. <span class="highlight">Fitness.</span></h1>
@@ -27,6 +30,7 @@
     </div>
   </section>
 
+<!-- Kontrollib kasutaja olemasolu ja lisa logouti funktsioon -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const user = JSON.parse(localStorage.getItem('user'));

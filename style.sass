@@ -78,6 +78,23 @@ h1, h2, h3
   background-color: lighten($primary, 40%)
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1)
 
+.topbar-left
+  display: flex
+  align-items: center
+  gap: 1.5rem
+
+.meist-link
+  font-family: $font-heading
+  font-weight: 600
+  color: $primary
+  font-size: 1.1rem
+  text-decoration: none
+  margin-left: 1rem
+
+  &:hover
+    text-decoration: underline
+
+
 .logo
   height: 40px
   width: auto
@@ -190,7 +207,7 @@ button:hover
 .workout-card
   position: relative   
 
-  // kustutusnupp
+  // KUSTUTUSNUPP
   .delete-btn
     position: absolute
     top: 0.5rem
@@ -252,7 +269,8 @@ button:hover
     &#confirm-ok
       background: $primary
       color: $white
-
+      
+// OTSING
 .search-container
   text-align: center
   margin-bottom: 1rem
@@ -264,6 +282,7 @@ button:hover
   border: 1px solid #ccc
   border-radius: 8px
 
+// MOBIILVAADE
 @media (max-width: 350px)
   .topbar
     flex-wrap: wrap
@@ -293,5 +312,51 @@ button:hover
     border: none // või nt 1px solid #ccc kui soovid
     cursor: pointer
 
+// MEIST lehe sisu
+.about-section
+  max-width: 700px
+  margin: 4rem auto
+  padding: 2rem
+  background-color: $white
+  border-radius: 12px
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05)
+  text-align: center
+  font-family: $font-heading
+  font-size: 1.1rem
+  line-height: 1.7
+  color: $text
 
+.page-title
+  font-size: 2rem
+  color: $primary
+  margin-bottom: 1.5rem
+  text-align: center
 
+.intro-text
+  margin-bottom: 1.5rem
+
+.motive-text
+  margin-top: 2rem
+  font-style: italic
+  text-align: center
+  color: $primary
+  font-size: 1.2rem
+
+// MEIST – call to action nupp
+.register-cta
+  margin-top: 3rem
+  text-align: center
+
+.register-button
+  display: inline-block
+  background-color: $primary
+  color: $white
+  padding: 0.8rem 1.6rem
+  border-radius: 8px
+  text-decoration: none
+  font-weight: bold
+  font-family: $font-heading
+  font-size: 1rem
+
+  &:hover
+    background-color: darken($primary, 10%)

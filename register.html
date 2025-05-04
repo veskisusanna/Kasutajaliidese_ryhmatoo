@@ -10,8 +10,11 @@
 </head>
 <body>
   <div class="topbar">
-     <img src="img/logo.png" alt="Logo" class="logo" />
-  </div>
+    <div class="topbar-left">
+      <img src="img/logo.png" alt="Logo" class="logo" />
+      <a href="meist.html" class="meist-link">Meist</a>
+    </div>
+  </div>  
 
   <div id="info-modal" class="modal-overlay hidden">
     <div class="modal">
@@ -49,7 +52,7 @@
 
       infoOk.addEventListener('click', () => {
         infoOverlay.classList.add('hidden');
-        // peale registreerimist suuna login-lehele
+        // Peale registreerimist suuna login-lehele
         window.location.replace('indeks.html');
       });
 
