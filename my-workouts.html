@@ -7,11 +7,10 @@
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-
 </head>
 <body>
 
-  <!-- Kustutuse kinnitus -->
+  <!-- Kustutuse kinnitus modaal -->
   <div id="confirm-modal" class="modal-overlay hidden">
     <div class="modal">
       <p id="confirm-text"></p>
@@ -22,46 +21,50 @@
     </div>
   </div>
 
-  <!-- Nav -->
-  <div class="topbar">
-      <a href="dashboard.html">
-        <img src="img/logo.png" alt="Logo" class="logo" />
+  <!-- Semantiline nav -->
+  <nav class="topbar" aria-label="Peamenüü">
+    <div class="topbar-left">
+      <a href="dashboard.html" class="logo-link">
+        <img src="img/logo.png" alt="FitFastFitness logo" class="logo"/>
       </a>
-        <div class="menu">
-      <a href="my-workouts.html"><button>Minu treeningud</button></a>
-      <a href="add-workout.html"><button>Lisa treening</button></a>
-      <button id="logout-btn">Logi välja</button>
     </div>
-  </div>
+    <ul class="nav-list">
+      <li><a href="my-workouts.html">Minu treeningud</a></li>
+      <li><a href="add-workout.html">Lisa treening</a></li>
+      <li><a href="indeks.html" id="logout-btn">Logi välja</a></li>   
+    </ul>
+  </nav>
 
   <h2 class="page-title">Sinu lisatud treeningud:</h2>
 
   <!-- Otsingukast -->
   <div class="search-container">
-    <input type="text" id="search-input" placeholder="Otsi treeningut..." />
+    <label for="search-input">Otsi treeningut:</label>
+    <input type="text" id="search-input" placeholder="Näiteks: Jooga" />
   </div>
 
-  <main class="workout-section">
+  <main class="workout-section" aria-labelledby="workouts-heading">
+    <h2 id="workouts-heading" class="visually-hidden">Minu treeningud</h2>
     <div id="my-workout-list" class="workout-grid"></div>
   </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      //Sisselogimise kontroll
+      // 1) Sisselogimise kontroll
       const user = JSON.parse(localStorage.getItem('user'));
       if (!user) return window.location.replace('indeks.html');
 
-      //Logout
+      // 2) Logout
       document.getElementById('logout-btn').addEventListener('click', () => {
         localStorage.removeItem('user');
         window.location.replace('indeks.html');
       });
 
-      //Treeningute laadimine
+      // 3) Laeme treeningud
       const list = document.getElementById('my-workout-list');
       let saved = JSON.parse(localStorage.getItem('myWorkouts') || '[]');
 
-      //Modal viited
+      // 4) Kinnitusmodaal
       const modalOverlay = document.getElementById('confirm-modal');
       const modalText    = document.getElementById('confirm-text');
       const btnCancel    = document.getElementById('confirm-cancel');
@@ -87,13 +90,13 @@
         deleteIndex = null;
       });
 
-      // Renderdamine
+      // 5) Kuvame treeningukaardid
       function renderWorkouts() {
         list.innerHTML = '';
         if (saved.length === 0) {
           list.innerHTML = `
             <p style="text-align:center; font-family:'Poppins',sans-serif;">
-              Sa pole veel ühtegi treeningut lisanud.<br>
+              Sa ei ole veel ühtegi treeningut lisanud.<br>
               <a href="add-workout.html" style="color:#ff69b4; text-decoration:underline;">Lisa esimene treening</a>
             </p>`;
           return;
@@ -102,19 +105,18 @@
           const card = document.createElement('div');
           card.className = 'workout-card';
           card.innerHTML = `
-            <button class="delete-btn">&times;</button>
+            <button class="delete-btn" aria-label="Kustuta ${w.title}">&times;</button>
             <img src="${w.image}" alt="${w.title}">
             <h3>${w.title}</h3>
             <p>${w.duration}</p>
             <p>${w.level}</p>
           `;
-          card.querySelector('.delete-btn')
-              .addEventListener('click', () => showConfirm(w.title,i));
+          card.querySelector('.delete-btn').addEventListener('click', () => showConfirm(w.title,i));
           list.appendChild(card);
         });
       }
 
-      //Otsingu loogika
+      // 6) Otsingu filter
       const searchInput = document.getElementById('search-input');
       searchInput.addEventListener('input', () => {
         const term = searchInput.value.trim().toLowerCase();
@@ -124,7 +126,6 @@
         });
       });
 
-      // Käivitame esmalt
       renderWorkouts();
     });
   </script>

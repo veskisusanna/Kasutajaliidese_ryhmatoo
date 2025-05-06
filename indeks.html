@@ -1,41 +1,51 @@
 <!DOCTYPE html>
 <html lang="et">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FitFastFitness – Logi sisse</title>
   <link rel="stylesheet" href="style.css"/>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 
-  <div class="topbar">
+  <!-- Navigatsiooniriba -->
+  <nav class="topbar" aria-label="Peamenu">
     <div class="topbar-left">
-      <img src="img/logo.png" alt="Logo" class="logo" />
-      <a href="meist.html" class="meist-link">Meist</a>
+      <a href="dashboard.html" class="logo-link">
+        <img src="img/logo.png" alt="FitFastFitness logo" class="logo"/>
+      </a>
+      <ul class="nav-list">
+        <li><a href="meist.html">Meist</a></li>
+      </ul>
     </div>
-  </div>  
+  </nav>
 
- <!-- Login-vaade: vorm ja link registreerimiseks -->
+  <!-- Logi sisse vaade -->
   <div class="view-container">
-    <section class="view">
-      <h1>Logi sisse</h1>
-      <form id="login-form">
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Parool" required />
+    <section class="view" aria-labelledby="login-heading">
+      <h1 id="login-heading">Logi sisse</h1>
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input id="login-email" name="email" type="email" placeholder="Email" required />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Parool</label>
+          <input id="login-password" name="password" type="password" placeholder="Parool" required />
+        </div>
         <button type="submit">Sisene</button>
       </form>
       <p>Või <a href="register.html">loo konto</a></p>
     </section>
   </div>
 
- <!-- Sisselogimise loogika -->
   <script>
     document.getElementById('login-form').addEventListener('submit', e => {
       e.preventDefault();
-      const [email, pass] = [...e.target].map(i => i.value);
-      const user = JSON.parse(localStorage.getItem('user'));
+      const email = document.getElementById('login-email').value;
+      const pass  = document.getElementById('login-password').value;
+      const user  = JSON.parse(localStorage.getItem('user'));
       if (user && user.email === email && user.password === pass) {
         window.location.href = 'dashboard.html';
       } else {

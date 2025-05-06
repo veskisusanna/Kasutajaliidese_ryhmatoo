@@ -6,23 +6,25 @@
   <title>FitFastFitness – Avaleht</title>
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 
-  <div class="topbar">
+  <!-- Semantiline nav -->
+  <nav class="topbar" aria-label="Peamenüü">
     <div class="topbar-left">
-      <img src="img/logo.png" alt="Logo" class="logo" />
+      <a href="dashboard.html" class="logo-link">
+        <img src="img/logo.png" alt="FitFastFitness logo" class="logo"/>
+      </a>
     </div>
-    <div class="menu">
-      <a href="my-workouts.html"><button>Minu treeningud</button></a>
-      <a href="add-workout.html"><button>Lisa treening</button></a>
-      <button id="logout-btn">Logi välja</button>
-    </div>
-  </div>
+    <ul class="nav-list">
+      <li><a href="my-workouts.html">Minu treeningud</a></li>
+      <li><a href="add-workout.html">Lisa treening</a></li>
+      <li><a href="indeks.html">Logi välja</a></li>
+    </ul>
+  </nav>
   
-<!-- Esilehe hero + tervitus -->
+  <!-- Esilehe hero + tervitus -->
   <section class="dashboard-hero">
     <div class="overlay">
       <h1>Fit. Fast. <span class="highlight">Fitness.</span></h1>
@@ -30,7 +32,6 @@
     </div>
   </section>
 
-<!-- Kontrollib kasutaja olemasolu ja lisa logouti funktsioon -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const user = JSON.parse(localStorage.getItem('user'));

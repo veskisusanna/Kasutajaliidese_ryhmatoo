@@ -76,12 +76,34 @@ h1, h2, h3
   align-items: center
   padding: 1rem 2rem
   background-color: lighten($primary, 40%)
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1)
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1)
 
 .topbar-left
   display: flex
   align-items: center
   gap: 1.5rem
+
+.nav-list
+  list-style: none
+  margin: 0
+  padding: 0
+  display: flex
+  gap: 1rem
+
+.nav-list li a,
+.nav-list li button
+  background-color: $primary
+  color: $white
+  padding: 0.7rem 1.2rem
+  border-radius: 8px
+  text-decoration: none
+  font-weight: bold
+  border: none
+  cursor: pointer
+
+.nav-list li a:hover,
+.nav-list li button:hover
+  background-color: darken($primary, 10%)
 
 .meist-link
   font-family: $font-heading
@@ -97,7 +119,7 @@ h1, h2, h3
 
 .logo
   height: 40px
-  width: auto
+  cursor: pointer
 
 .menu
   display: flex
@@ -115,6 +137,31 @@ button
 
 button:hover
   background-color: darken($primary, 10%)
+
+.form-group
+  display: flex
+  flex-direction: column
+  margin-bottom: 1rem
+
+.form-group label
+  margin-bottom: 0.4rem
+  font-weight: 600
+
+.form-group input
+  padding: 0.8rem
+  border: 1px solid #ccc
+  border-radius: 8px
+
+.visually-hidden
+  position: absolute
+  width: 1px
+  height: 1px
+  padding: 0
+  margin: -1px
+  overflow: hidden
+  clip: rect(0, 0, 0, 0)
+  border: 0
+
 
 
 // DASHBOARD 
@@ -282,35 +329,7 @@ button:hover
   border: 1px solid #ccc
   border-radius: 8px
 
-// MOBIILVAADE
-@media (max-width: 350px)
-  .topbar
-    flex-wrap: wrap
-    justify-content: center
-    padding: 0.5rem 0.5rem
-    gap: 0.5rem
 
-    a, button
-      padding: 0.4rem 0.8rem
-      font-size: 0.85rem
-      min-width: 90px
-      max-width: 110px
-      text-align: center
-
-@media (max-width: 480px)
-  .nav-button
-    width: 110px
-    height: 45px
-    font-size: 0.85rem
-    padding: 0
-    display: flex
-    align-items: center
-    justify-content: center
-    text-align: center
-    border-radius: 8px // kui sul on ümardused
-    background-color: #ff69b4 // sinu taust
-    border: none // või nt 1px solid #ccc kui soovid
-    cursor: pointer
 
 // MEIST lehe sisu
 .about-section
@@ -360,3 +379,59 @@ button:hover
 
   &:hover
     background-color: darken($primary, 10%)
+
+
+// MOBIILVAADE
+
+// Alla 768px: nav kolonni
+@media (max-width: 768px)
+  nav.topbar
+    flex-direction: column
+    align-items: center
+    padding: 0.5rem 1rem
+    gap: 0.5rem
+
+  // Väiksem logo
+  .logo
+    height: 35px
+    margin-bottom: 0.5rem
+
+  ul.nav-list
+    display: flex
+    flex-direction: column
+    width: 100%
+    gap: 0.5rem
+
+    li a,
+    li button
+      width: 100%
+      padding: 0.8rem 0
+      font-size: 0.9rem
+      text-align: center
+      border-radius: 6px
+      line-height: 1.2
+
+// Alla 480px: veel pisemad nupud
+@media (max-width: 480px)
+  .logo
+    height: 32px
+
+  ul.nav-list
+    gap: 0.4rem
+
+    li a,
+    li button
+      font-size: 0.8rem
+      padding: 0.7rem 0
+      border-radius: 5px
+
+// Alla 350px: minimeeri veel
+@media (max-width: 350px)
+  ul.nav-list
+    gap: 0.3rem
+
+    li a,
+    li button
+      font-size: 0.75rem
+      padding: 0.6rem 0
+      border-radius: 4px
