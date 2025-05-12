@@ -11,9 +11,9 @@
 <body>
 
   <!-- Kustutuse kinnitus modaal -->
-  <div id="confirm-modal" class="modal-overlay hidden">
+  <div id="confirm-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="confirm-text">
     <div class="modal">
-      <p id="confirm-text"></p>
+      <p id="confirm-text">Kas soovid kindlasti selle treeningu kustutada?</p>
       <div class="modal-actions">
         <button id="confirm-cancel">Tühista</button>
         <button id="confirm-ok">Kustuta</button>
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <!-- Semantiline nav -->
+  <!-- Navigeerimisriba -->
   <nav class="topbar" aria-label="Peamenüü">
     <div class="topbar-left">
       <a href="dashboard.html" class="logo-link">
@@ -31,44 +31,43 @@
     <ul class="nav-list">
       <li><a href="my-workouts.html">Minu treeningud</a></li>
       <li><a href="add-workout.html">Lisa treening</a></li>
-      <li><a href="indeks.html" id="logout-btn">Logi välja</a></li>   
+      <li><a href="indeks.html" id="logout-btn">Logi välja</a></li>
     </ul>
   </nav>
 
+  <!-- Lehe pealkiri -->
   <h2 class="page-title">Sinu lisatud treeningud:</h2>
 
-  <!-- Otsingukast -->
+  <!-- Otsing -->
   <div class="search-container">
     <label for="search-input">Otsi treeningut:</label>
     <input type="text" id="search-input" placeholder="Näiteks: Jooga" />
   </div>
 
+  <!-- Treeningud -->
   <main class="workout-section" aria-labelledby="workouts-heading">
     <h2 id="workouts-heading" class="visually-hidden">Minu treeningud</h2>
     <div id="my-workout-list" class="workout-grid"></div>
   </main>
 
+  <!-- Skript -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1) Sisselogimise kontroll
       const user = JSON.parse(localStorage.getItem('user'));
       if (!user) return window.location.replace('indeks.html');
 
-      // 2) Logout
       document.getElementById('logout-btn').addEventListener('click', () => {
         localStorage.removeItem('user');
         window.location.replace('indeks.html');
       });
 
-      // 3) Laeme treeningud
       const list = document.getElementById('my-workout-list');
       let saved = JSON.parse(localStorage.getItem('myWorkouts') || '[]');
 
-      // 4) Kinnitusmodaal
       const modalOverlay = document.getElementById('confirm-modal');
-      const modalText    = document.getElementById('confirm-text');
-      const btnCancel    = document.getElementById('confirm-cancel');
-      const btnOk        = document.getElementById('confirm-ok');
+      const modalText = document.getElementById('confirm-text');
+      const btnCancel = document.getElementById('confirm-cancel');
+      const btnOk = document.getElementById('confirm-ok');
       let deleteIndex = null;
 
       function showConfirm(title, idx) {
@@ -76,6 +75,7 @@
         deleteIndex = idx;
         modalOverlay.classList.remove('hidden');
       }
+
       btnOk.addEventListener('click', () => {
         if (deleteIndex !== null) {
           saved.splice(deleteIndex, 1);
@@ -85,12 +85,12 @@
         modalOverlay.classList.add('hidden');
         deleteIndex = null;
       });
+
       btnCancel.addEventListener('click', () => {
         modalOverlay.classList.add('hidden');
         deleteIndex = null;
       });
 
-      // 5) Kuvame treeningukaardid
       function renderWorkouts() {
         list.innerHTML = '';
         if (saved.length === 0) {
@@ -101,7 +101,8 @@
             </p>`;
           return;
         }
-        saved.forEach((w,i) => {
+
+        saved.forEach((w, i) => {
           const card = document.createElement('div');
           card.className = 'workout-card';
           card.innerHTML = `
@@ -111,14 +112,12 @@
             <p>${w.duration}</p>
             <p>${w.level}</p>
           `;
-          card.querySelector('.delete-btn').addEventListener('click', () => showConfirm(w.title,i));
+          card.querySelector('.delete-btn').addEventListener('click', () => showConfirm(w.title, i));
           list.appendChild(card);
         });
       }
 
-      // 6) Otsingu filter
-      const searchInput = document.getElementById('search-input');
-      searchInput.addEventListener('input', () => {
+      document.getElementById('search-input').addEventListener('input', () => {
         const term = searchInput.value.trim().toLowerCase();
         document.querySelectorAll('.workout-card').forEach(card => {
           const title = card.querySelector('h3').textContent.toLowerCase();

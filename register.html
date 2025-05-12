@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <!-- Semantiline nav -->
+  <!-- Navigeerimisriba -->
   <nav class="topbar" aria-label="Peamenüü">
     <div class="topbar-left">
       <a href="dashboard.html" class="logo-link">
@@ -22,31 +22,31 @@
   </nav>
 
   <!-- Info-modaal -->
-  <div id="info-modal" class="modal-overlay hidden">
+  <div id="info-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="info-text">
     <div class="modal">
-      <p id="info-text"></p>
+      <p id="info-text">Konto loodud!</p>
       <div class="modal-actions">
         <button id="info-ok">OK</button>
       </div>
     </div>
   </div>
 
-  <!-- Registreerimise vaade -->
+  <!-- Registreerimisvaade -->
   <div class="view-container">
     <section class="view" aria-labelledby="register-heading">
       <h1 id="register-heading">Loo konto</h1>
       <form id="register-form" novalidate>
         <div class="form-group">
           <label for="reg-name">Nimi</label>
-          <input id="reg-name"   name="name"     type="text"     placeholder="Nimi"   required/>
+          <input id="reg-name" name="name" type="text" placeholder="Nimi" required />
         </div>
         <div class="form-group">
           <label for="reg-email">Email</label>
-          <input id="reg-email"  name="email"    type="email"    placeholder="Email"  required/>
+          <input id="reg-email" name="email" type="email" placeholder="Email" required />
         </div>
         <div class="form-group">
           <label for="reg-pass">Parool</label>
-          <input id="reg-pass"   name="password" type="password" placeholder="Parool" required/>
+          <input id="reg-pass" name="password" type="password" placeholder="Parool" required />
         </div>
         <button type="submit">Registreeru</button>
       </form>
@@ -56,7 +56,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Info-modaal loogika
       const infoModal = document.getElementById('info-modal');
       const infoText  = document.getElementById('info-text');
       const infoOk    = document.getElementById('info-ok');
@@ -65,18 +64,19 @@
         infoText.textContent = msg;
         infoModal.classList.remove('hidden');
       }
+
       infoOk.addEventListener('click', () => {
         infoModal.classList.add('hidden');
         window.location.replace('indeks.html');
       });
 
-      // Registreerimisvorm
       const form = document.getElementById('register-form');
       form.addEventListener('submit', e => {
         e.preventDefault();
         const name  = form.elements['name'].value;
         const email = form.elements['email'].value;
         const pass  = form.elements['password'].value;
+
         localStorage.setItem('user', JSON.stringify({ name, email, password: pass }));
         showInfo('Konto loodud! Palun logi sisse.');
       });
