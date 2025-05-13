@@ -116,6 +116,7 @@ h1, h2, h3 {
 }
 .meist-link:hover {
   text-decoration: underline;
+  text-decoration: underline;
 }
 
 .logo {
@@ -392,55 +393,68 @@ button:hover {
   background-color: #ff369b;
 }
 
+.burger {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  nav.topbar {
+  .topbar {
     flex-direction: column;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    gap: 0.5rem;
+    align-items: flex-start;
+    padding: 0.8rem 1rem;
   }
   .logo {
-    height: 35px;
+    height: 32px;
     margin-bottom: 0.5rem;
   }
-  ul.nav-list {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 0.5rem;
+  .burger {
+    display: block;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #ff69b4;
+    cursor: pointer;
+    margin-left: auto;
+    margin-bottom: 0.3rem;
+    padding: 0.2rem 0.4rem;
   }
-  ul.nav-list li a,
-  ul.nav-list li button {
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
-    padding: 0.8rem 0;
-    font-size: 0.9rem;
-    text-align: center;
-    border-radius: 6px;
-    line-height: 1.2;
+    padding: 0;
+    gap: 0.4rem;
+    background: none;
+  }
+  .nav-list li a {
+    padding: 0.4rem 0;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #ff69b4;
+    font-weight: bold;
+    background: none;
+    border: none;
+    display: block;
+    width: auto;
+  }
+  .nav-list li a:hover {
+    text-decoration: underline;
+  }
+  .nav-list.show {
+    display: flex;
   }
 }
 @media (max-width: 480px) {
   .logo {
-    height: 32px;
+    height: 30px;
   }
-  ul.nav-list {
-    gap: 0.4rem;
-  }
-  ul.nav-list li a,
-  ul.nav-list li button {
-    font-size: 0.8rem;
-    padding: 0.7rem 0;
-    border-radius: 5px;
+  .nav-list li a {
+    font-size: 0.9rem;
   }
 }
 @media (max-width: 350px) {
-  ul.nav-list {
-    gap: 0.3rem;
-  }
-  ul.nav-list li a,
-  ul.nav-list li button {
-    font-size: 0.75rem;
-    padding: 0.6rem 0;
-    border-radius: 4px;
+  .nav-list li a {
+    font-size: 0.85rem;
   }
 }/*# sourceMappingURL=style.css.map */

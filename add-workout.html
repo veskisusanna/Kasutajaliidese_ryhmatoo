@@ -20,10 +20,15 @@
         <img src="img/logo.png" alt="FitFastFitness logo" class="logo"/>
       </a>
     </div>
-    <ul class="nav-list">
+
+    <!-- Burger nupp (nähtav ainult mobiilis) -->
+    <button class="burger" id="burger-menu" aria-label="Ava menüü">&#9776;</button>
+
+    <!-- Menüül on ID nav-links, mille kaudu JS peidab/näitab -->
+    <ul class="nav-list" id="nav-links">
       <li><a href="my-workouts.html">Minu treeningud</a></li>
       <li><a href="add-workout.html">Lisa treening</a></li>
-      <li><a href="indeks.html" id="logout-btn">Logi välja</a></li>   
+      <li><a href="indeks.html" id="logout-btn">Logi välja</a></li>
     </ul>
   </nav>
 
@@ -213,7 +218,17 @@
           showInfo(`Treening „${workout.title}“ lisatud!`);
         });
       });
-    });
+  // BURGER-MENÜÜ mobiilivaates
+  const burger = document.getElementById('burger-menu');
+        const nav = document.getElementById('nav-links');
+
+        if (burger && nav) {
+          burger.addEventListener('click', () => {
+            nav.classList.toggle('show');
+          });
+        }
+
+      }); // ← see on DOMContentLoaded lõpp
   </script>
 </body>
 </html>
