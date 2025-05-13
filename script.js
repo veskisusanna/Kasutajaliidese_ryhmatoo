@@ -1,44 +1,64 @@
-
 function showView(viewId) {
-  document.querySelectorAll('.view').forEach(s => s.classList.add('hidden'));
-  document.getElementById(viewId).classList.remove('hidden');
+  document.querySelectorAll('.view').forEach(section => {
+    section.classList.add('hidden');
+  });
+  const view = document.getElementById(viewId);
+  if (view) view.classList.remove('hidden');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('login-form');
   const registerForm = document.getElementById('register-form');
 
-  // Vaatevahetus nupud
-  document.getElementById('show-register').addEventListener('click', e => {
-    e.preventDefault();
-    showView('register-view');
-  });
-  document.getElementById('show-login').addEventListener('click', e => {
-    e.preventDefault();
-    showView('login-view');
-  });
+  const showLoginBtn = document.getElementById('show-login');
+  const showRegisterBtn = document.getElementById('show-register');
 
-  // Registreerimine
-  registerForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const [name, email, password] = [...e.target].map(i => i.value).slice(0,3);
-    localStorage.setItem('user', JSON.stringify({ name, email, password }));
-    alert('Konto loodud! Logi nüüd sisse.');
-    showView('login-view');
-  });
+  if (showLoginBtn) {
+    showLoginBtn.addEventListener('click', e => {
+      e.preventDefault();
+      showView('login-view');
+    });
+  }
 
-  // Sisselogimine
-  loginForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const [email, password] = [...e.target].map(i => i.value);
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user && user.email === email && user.password === password) {
-      window.location.href = 'dashboard.html';
-    } else {
-      alert('Vale email või parool');
-    }
-  });
+  if (showRegisterBtn) {
+    showRegisterBtn.addEventListener('click', e => {
+      e.preventDefault();
+      showView('register-view');
+    });
+  }
 
-  // Alguses näita ainult login-vaadet
+  if (registerForm) {
+    registerForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = registerForm.elements['name']?.value?.trim();
+      const email = registerForm.elements['email']?.value?.trim();
+      const password = registerForm.elements['password']?.value?.trim();
+
+      if (name && email && password) {
+        localStorage.setItem('user', JSON.stringify({ name, email, password }));
+        alert('Konto loodud! Logi nüüd sisse.');
+        showView('login-view');
+      } else {
+        alert('Palun täida kõik väljad.');
+      }
+    });
+  }
+
+  if (loginForm) {
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = loginForm.elements['email']?.value?.trim();
+      const password = loginForm.elements['password']?.value?.trim();
+      const user = JSON.parse(localStorage.getItem('user'));
+
+      if (user && user.email === email && user.password === password) {
+        window.location.href = 'dashboard.html';
+      } else {
+        alert('Vale email või parool');
+      }
+    });
+  }
+
+  // Algvaade: logi sisse
   showView('login-view');
 });

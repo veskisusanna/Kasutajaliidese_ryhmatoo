@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="et">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FitFastFitness – Avaleht</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Syne:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
 
@@ -17,20 +17,23 @@
         <img src="img/logo.png" alt="FitFastFitness logo" class="logo"/>
       </a>
     </div>
-    <ul class="nav-list">
-      <li><a href="my-workouts.html">Minu treeningud</a></li>
-      <li><a href="add-workout.html">Lisa treening</a></li>
-      <li><a href="indeks.html">Logi välja</a></li>
-    </ul>
+    <div class="menu">
+      <a href="my-workouts.html"><button>Minu treeningud</button></a>
+      <a href="add-workout.html"><button>Lisa treening</button></a>
+      <button id="logout-btn">Logi välja</button>
+    </div>
   </nav>
   
-  <!-- Esilehe hero + tervitus -->
-  <section class="dashboard-hero">
-    <div class="overlay">
-      <h1>Fit. Fast. <span class="highlight">Fitness.</span></h1>
-      <p>Tere tulemast, <span id="user-name"></span>!</p>
-    </div>
-  </section>
+
+  <!-- Hero sektsioon -->
+  <main>
+    <section class="dashboard-hero" aria-labelledby="hero-title">
+      <div class="overlay">
+        <h1 id="hero-title">Fit. Fast. <span class="highlight">Fitness.</span></h1>
+        <p>Tere tulemast, <span id="user-name"></span>!</p>
+      </div>
+    </section>
+  </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -38,10 +41,13 @@
       if (!user) return window.location.replace('indeks.html');
       document.getElementById('user-name').textContent = user.name;
 
-      document.getElementById('logout-btn').addEventListener('click', () => {
-        localStorage.removeItem('user');
-        window.location.replace('indeks.html');
-      });
+      const logoutBtn = document.getElementById('logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          localStorage.removeItem('user');
+          window.location.replace('indeks.html');
+        });
+      }
     });
   </script>
 </body>
