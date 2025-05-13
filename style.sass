@@ -381,55 +381,63 @@ button:hover
 
 // MOBIILVAADE
 
-// Alla 768px: nav kolonni
+.burger
+  display: none
+
 @media (max-width: 768px)
-  nav.topbar
+  .topbar
     flex-direction: column
-    align-items: center
-    padding: 0.5rem 1rem
-    gap: 0.5rem
+    align-items: flex-start
+    padding: 0.8rem 1rem
 
-  // Väiksem logo
-  .logo
-    height: 35px
-    margin-bottom: 0.5rem
-
-  ul.nav-list
-    display: flex
-    flex-direction: column
-    width: 100%
-    gap: 0.5rem
-
-    li a,
-    li button
-      width: 100%
-      padding: 0.8rem 0
-      font-size: 0.9rem
-      text-align: center
-      border-radius: 6px
-      line-height: 1.2
-
-// Alla 480px: veel pisemad nupud
-@media (max-width: 480px)
   .logo
     height: 32px
+    margin-bottom: 0.5rem
 
-  ul.nav-list
+  .burger
+    display: block
+    font-size: 1.5rem   // ⬅ väiksemaks (varem oli 2rem)
+    background: none
+    border: none
+    color: $primary
+    cursor: pointer
+    margin-left: auto
+    margin-bottom: 0.3rem
+    padding: 0.2rem 0.4rem  // ⬅ vähem tühja ruumi nupu sees
+
+  .nav-list
+    display: none
+    flex-direction: column
+    align-items: flex-start
+    width: 100%
+    padding: 0
     gap: 0.4rem
+    background: none
 
-    li a,
-    li button
-      font-size: 0.8rem
-      padding: 0.7rem 0
-      border-radius: 5px
+    li a
+      padding: 0.4rem 0
+      font-size: 1rem
+      text-decoration: none
+      color: $primary
+      font-weight: bold
+      background: none
+      border: none
+      display: block
+      width: auto
 
-// Alla 350px: minimeeri veel
+      &:hover
+        text-decoration: underline
+
+  .nav-list.show
+    display: flex
+
+@media (max-width: 480px)
+  .logo
+    height: 30px
+
+  .nav-list li a
+    font-size: 0.9rem
+
 @media (max-width: 350px)
-  ul.nav-list
-    gap: 0.3rem
-
-    li a,
-    li button
-      font-size: 0.75rem
-      padding: 0.6rem 0
-      border-radius: 4px
+  .nav-list li a
+    font-size: 0.85rem
